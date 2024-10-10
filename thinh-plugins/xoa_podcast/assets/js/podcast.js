@@ -1,4 +1,4 @@
-	document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     let player = document.getElementById('podcast-audio-player');
     let rewindButton = document.getElementById('rewind-button');
     let playImg = document.getElementById('play-img');
@@ -9,10 +9,10 @@
     let progress = document.getElementById('progress');
     let currentTimeDisplay = document.getElementById('current-time');
     let totalTimeDisplay = document.getElementById('total-time');
-	let minutes = Math.floor(player.duration / 60);
+    let minutes = Math.floor(player.duration / 60);
     let seconds = Math.floor(player.duration % 60);
     totalTimeDisplay.textContent = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
-    player.onloadedmetadata = function() {
+    player.onloadedmetadata = function () {
         if (!isNaN(player.duration)) {
             progress.max = player.duration;
             updateTotalTime(player.duration);
@@ -33,30 +33,30 @@
         }
     }
 
-    player.addEventListener('timeupdate', function() {
+    player.addEventListener('timeupdate', function () {
         updateProgress();
         updateCurrentTime(player.currentTime);
     });
 
-    progress.oninput = function() {
+    progress.oninput = function () {
         player.currentTime = progress.value;
         updateCurrentTime(progress.value);
     };
 
-    progress.onclick = function(e) {
+    progress.onclick = function (e) {
         let percent = e.offsetX / this.offsetWidth;
         player.currentTime = percent * player.duration;
     };
 
-    rewindButton.onclick = function() {
+    rewindButton.onclick = function () {
         player.currentTime -= 15;
     };
 
-    forwardButton.onclick = function() {
+    forwardButton.onclick = function () {
         player.currentTime += 15;
     };
 
-    resetButton.onclick = function() {
+    resetButton.onclick = function () {
         player.currentTime = 0;
         progress.value = 0;
         player.pause();
@@ -87,14 +87,15 @@
         totalTimeDisplay.textContent = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
     }
 
-    stopButton.onclick = function() {
-        playPause(); 
+    stopButton.onclick = function () {
+        playPause();
     };
 
-    let loveButton = document.querySelector('.love-button'); 
+    let loveButton = document.querySelector('.love-button');
 
-    loveButton.addEventListener('click', function() {
-        loveButton.classList.toggle('button-container'); 
+    loveButton.addEventListener('click', function () {
+        loveButton.classList.toggle('button-container');
         loveButton.classList.toggle('active');
     });
 });
+

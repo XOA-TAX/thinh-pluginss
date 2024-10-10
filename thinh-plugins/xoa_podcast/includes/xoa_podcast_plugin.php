@@ -1979,7 +1979,7 @@ final class XoaPodcastPlugin
                 }
 
                 .podcast-slide img {
-                    height: auto;
+                    height: 100%;
                 }
             }
         </style>
